@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx_c
+    ports: []
+    environment: []
+    volumes: []
+networks:
+  default:
+    driver: bridge
