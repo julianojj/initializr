@@ -1,0 +1,26 @@
+version: '3.9'
+services:
+  proxy:
+    image: nginx:alpine
+    container_name: proxy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - './proxy:/etc/nginx/conf.d'
+    depends_on:
+      - api
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: api
+    command: node dist/src/main.js
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: app
+    command: yarn start
+    depends_on:
+      - proxy
