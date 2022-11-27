@@ -10,6 +10,7 @@ services:
       - './proxy:/etc/nginx/conf.d'
     depends_on:
       - api
+      - app
   api:
     build:
       context: ./api
@@ -22,5 +23,3 @@ services:
       dockerfile: Dockerfile
     container_name: app
     command: yarn start
-    depends_on:
-      - proxy
