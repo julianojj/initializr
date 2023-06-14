@@ -36,7 +36,7 @@ const Header = () => {
                 </Link>
                 <nav>
                     <Link
-                        href='https://github.com/julianojj'
+                        href='https://github.com/julianojj/initializr'
                         target='_blank'
                     >
                         About
