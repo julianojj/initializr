@@ -7,6 +7,7 @@ import Header from "../../components/Header"
 import Input from '../../components/Input'
 
 const Container = styled.div`
+    margin-bottom: 16px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -52,7 +53,6 @@ const RegistryImage = styled.div`
         p {
             margin: 0;
         }
-        
 
         form {
             max-width: 600px;
