@@ -1,4 +1,5 @@
 import { Container } from '../../src/domain/entity/Container'
+import { MariaDB } from '../../src/domain/entity/MariaDB'
 import { Nginx } from '../../src/domain/entity/Nginx'
 import { RabbitMQ } from '../../src/domain/entity/RabbitMQ'
 
@@ -103,4 +104,42 @@ test('Should create a new container from rabbitmq', () => {
     )
     expect(rabbitmq.image).toBe('rabbitmq:3-management')
     expect(rabbitmq.network).toBe('bridge')
+})
+
+test('Should create a new container from mariadb', () => {
+    const mariadb = new MariaDB(
+        'mariadb_c',
+        [
+            {
+                host: 3306,
+                container: 3306
+            }
+        ],
+        [
+            {
+                name: 'MARIADB_USER',
+                value: 'admin'
+            },
+            {
+                name: 'MARIADB_PASSWORD',
+                value: 'admin'
+            },
+            {
+                name: 'MARIADB_ROOT_PASSWORD',
+                value: 'admin'
+            },
+            {
+                name: 'MARIADB_DATABASE',
+                value: 'test'
+            }
+        ],
+        [
+            {
+                host: 'mariadb_volume',
+                container: '/var/lib/mysql'
+            }
+        ]
+    )
+    expect(mariadb.image).toBe('mariadb:latest')
+    expect(mariadb.network).toBe('bridge')
 })
